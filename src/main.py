@@ -34,7 +34,15 @@ def analyze_document(request: DocumentRequest, x_api_key: str = Header(None)):
 
         with open(file_path, "wb") as f:
             f.write(file_data)
+        file_type = request.fileType.lower()
 
+        if file_type not in ["pdf", "docx", "image"]:
+            if request.fileName.endswith(".pdf"):
+                file_type = "pdf"
+            elif request.fileName.endswith(".docx"):
+                file_type = "docx"
+            else:
+                file_type = "image"
         # Extract text
         text = extract_text(file_path, request.fileType)
 
