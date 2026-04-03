@@ -3,10 +3,10 @@ from pydantic import BaseModel
 import base64
 import os
 
-from extract_text import extract_text
-from summarize import summarize_text
-from entities import extract_entities
-from sentiment import get_sentiment
+from src.extract_text import extract_text
+from src.summarize import summarize_text
+from src.entities import extract_entities
+from src.sentiment import get_sentiment
 
 app = FastAPI()
 
